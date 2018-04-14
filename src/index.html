@@ -15,16 +15,25 @@
       const object2 = new Octahedron();
       const object3 = new BevelCube();
       const light = [10.0, 0.0, 0.0];
+      const eye = [0.0, 0.0, 10.0];
+      const target = [0.0, 0.0, 0.0];
+      const up = [0.0, 1.0, 0.0];
+      
       object1.setPosition( 3.0, 0.0, 0.0);
       object2.setPosition(-3.0, 0.0, 0.0);
       ai6.addObject( object1 );
       ai6.addObject( object2 );
       ai6.addObject( object3 );
       ai6.addLight(light);
+      ai6.setCamera(eye, target, up);
       
       ai6.fetchShader(ai6.GL, mainLoop);
 
+      this.time = 0.0;
       function mainLoop() {
+        this.time += 0.01;
+        eye[0] = Math.cos(this.time) * 10;
+        eye[2] = Math.sin(this.time) * 10;
         light[0] -= 0.05;
         ai6.draw(ai6.GL);
         requestAnimationFrame( mainLoop );

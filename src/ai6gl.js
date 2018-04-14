@@ -11,6 +11,11 @@ class AI6GL {
     }
   }
 
+  setCamera (eye, target, up) {
+    this.eye = eye;
+    this.target = target;
+    this.up = up;
+  }
   addLight (light) {
     this.light = light;
   }
@@ -100,7 +105,7 @@ class AI6GL {
       gl.enableVertexAttribArray(vPlaneAttNormal);
       gl.vertexAttribPointer(vPlaneAttNormal, 3, gl.FLOAT, false, 0, 0);
   
-      const view        = Matrix.lookAt([0.0, 0.0, 10.0], [0.0, 0.0, 0.0], [0.0, 1.0, 0.0]);
+      const view        = Matrix.lookAt(this.eye, this.target, this.up);
       const perspective = Matrix.perspective(90, 640.0 / 480.0, 0.1, 100);
       const model       = Matrix.create();
       const vp          = Matrix.multiply(perspective, view);
