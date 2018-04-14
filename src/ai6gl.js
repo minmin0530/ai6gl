@@ -7,6 +7,7 @@ class AI6GL {
       this.GL = gl;
       this.object = [];
       this.time = 0.0;
+      gl.enable(gl.CULL_FACE);
 //      this.fetchShader(gl);
     }
   }
