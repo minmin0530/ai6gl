@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>ai6gl</title>
+  </head>
+  <body>
+    <canvas id='canvas' width='640' height='480'></canvas>
+    <script src='minMatrix.js'></script>
+    <script src='matrix.js'></script>
+    <script src='bevelcube.js'></script>
+    <script src='octahedron.js'></script>
+    <script src='ai6gl.js'></script>
+    <script>
+      const ai6 = new AI6GL();
+      const object1 = new Octahedron();
+      const object2 = new Octahedron();
+      const object3 = new BevelCube();
+      const light = [10.0, 0.0, 0.0];
+      object1.setPosition( 3.0, 0.0, 0.0);
+      object2.setPosition(-3.0, 0.0, 0.0);
+      ai6.addObject( object1 );
+      ai6.addObject( object2 );
+      ai6.addObject( object3 );
+      ai6.addLight(light);
+      
+      ai6.fetchShader(ai6.GL, mainLoop);
+
+      function mainLoop() {
+        light[0] -= 0.05;
+        ai6.draw(ai6.GL);
+        requestAnimationFrame( mainLoop );
+        object1.update();
+        object2.update();
+      }
+
+    </script>
+  </body>
+</html>
