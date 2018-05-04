@@ -98,17 +98,35 @@ class Matrix {
     ];
   }
   scale(x, y, z) {
+    // const m1 = [
+    //     x, 0.0, 0.0, 0.0,
+    //   0.0,   y, 0.0, 0.0,
+    //   0.0, 0.0,   z, 0.0,
+    //   0.0, 0.0, 0.0, 1.0,
+    // ];
+
+    // this.m = Matrix.multiply(m1, this.m);
+
     this.m[ 0] *= x;
     this.m[ 5] *= y;
     this.m[10] *= z;
+  }
+  rotateX(angle) {
+    this.m[ 5] = Math.cos(angle);  this.m[ 6] = -Math.sin(angle);
+    this.m[ 9] = Math.sin(angle);  this.m[10] =  Math.cos(angle);
+  }
+  translate(x, y, z) {
+    this.m[ 3] = x;
+    this.m[ 7] = y;
+    this.m[11] = z;
   }
   multiplyVector(v1) {
     const v2 = [];
 
     for (let l = 0; l < v1.length; l += 3) {
-      v2.push(this.m[0] * v1[0 + l] + this.m[1] * v1[1 + l] + this.m[ 2] * v1[2 + l]); 
-      v2.push(this.m[4] * v1[0 + l] + this.m[5] * v1[1 + l] + this.m[ 6] * v1[2 + l]); 
-      v2.push(this.m[8] * v1[0 + l] + this.m[9] * v1[1 + l] + this.m[10] * v1[2 + l]); 
+      v2.push(this.m[0] * v1[0 + l] + this.m[1] * v1[1 + l] + this.m[ 2] * v1[2 + l] + this.m[ 3]); 
+      v2.push(this.m[4] * v1[0 + l] + this.m[5] * v1[1 + l] + this.m[ 6] * v1[2 + l] + this.m[ 7]); 
+      v2.push(this.m[8] * v1[0 + l] + this.m[9] * v1[1 + l] + this.m[10] * v1[2 + l] + this.m[11]); 
     }
     return v2;
   }
