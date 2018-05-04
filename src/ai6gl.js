@@ -7,7 +7,12 @@ class AI6GL {
       this.GL = gl;
       this.object = [];
       this.time = 0.0;
-      gl.enable(gl.CULL_FACE);
+//      gl.enable(gl.CULL_FACE);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      gl.enable(gl.DEPTH_TEST);
+      gl.depthFunc(gl.LEQUAL);
+    
 //      this.fetchShader(gl);
     }
   }
@@ -76,8 +81,6 @@ class AI6GL {
 
   draw(gl) {
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    gl.enable(gl.DEPTH_TEST);
-    gl.depthFunc(gl.LEQUAL);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     const planeLightPosition = [
@@ -96,7 +99,7 @@ class AI6GL {
   
       gl.bindBuffer(gl.ARRAY_BUFFER, vPlaneColor);
       gl.enableVertexAttribArray(vPlaneAttColor);
-      gl.vertexAttribPointer(vPlaneAttColor, 3, gl.FLOAT, false, 0, 0);
+      gl.vertexAttribPointer(vPlaneAttColor, 4, gl.FLOAT, false, 0, 0);
   
       gl.bindBuffer(gl.ARRAY_BUFFER, vPlanePosition);
       gl.enableVertexAttribArray(vPlaneAttLocation);

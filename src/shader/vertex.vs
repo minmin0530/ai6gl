@@ -1,9 +1,9 @@
 attribute vec3 position;
-attribute vec3 color;
+attribute vec4 color;
 attribute vec3 normal;
 
 //varying   vec3 vEye;
-varying   vec3 vColor;
+varying   vec4 vColor;
 varying   vec3 vNormal;
 varying   vec3 vLightPosition;
 
