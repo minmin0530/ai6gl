@@ -1,164 +1,20 @@
 class BevelCube {
   constructor () {
-    this.alpha1 = 1.0;
-    this.alpha2 = 0.5;
-    this.color = [
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
+    this.color = [];
 
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
+    for (let l = 0; l < 16 * 6; ++l) {
+      this.color.push(0.5);
+      this.color.push(0.5);
+      this.color.push(0.5);
+      this.color.push(1.0);
+    }
+    for (let l = 0; l < 6 * 6; ++l) {
+      this.color.push(1.0);
+      this.color.push(0.0);
+      this.color.push(0.0);
+      this.color.push(0.5);
+    }
 
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-    //top
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-    //side  
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      
-    //bottom  
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-      0.5, 0.5, 0.5, this.alpha1,
-
-//plane
-      1.0, 0.0, 0.0, this.alpha2,
-      1.0, 0.0, 0.0, this.alpha2,
-      1.0, 0.0, 0.0, this.alpha2,
-      1.0, 0.0, 0.0, this.alpha2,
-      1.0, 0.0, 0.0, this.alpha2,
-      1.0, 0.0, 0.0, this.alpha2,
-
-      0.0, 1.0, 0.0, this.alpha2,
-      0.0, 1.0, 0.0, this.alpha2,
-      0.0, 1.0, 0.0, this.alpha2,
-      0.0, 1.0, 0.0, this.alpha2,
-      0.0, 1.0, 0.0, this.alpha2,
-      0.0, 1.0, 0.0, this.alpha2,
-
-      0.0, 0.0, 1.0, this.alpha2,
-      0.0, 0.0, 1.0, this.alpha2,
-      0.0, 0.0, 1.0, this.alpha2,
-      0.0, 0.0, 1.0, this.alpha2,
-      0.0, 0.0, 1.0, this.alpha2,
-      0.0, 0.0, 1.0, this.alpha2,
-
-      1.0, 1.0, 0.0, this.alpha2,
-      1.0, 1.0, 0.0, this.alpha2,
-      1.0, 1.0, 0.0, this.alpha2,
-      1.0, 1.0, 0.0, this.alpha2,
-      1.0, 1.0, 0.0, this.alpha2,
-      1.0, 1.0, 0.0, this.alpha2,
-
-      1.0, 0.0, 1.0, this.alpha2,
-      1.0, 0.0, 1.0, this.alpha2,
-      1.0, 0.0, 1.0, this.alpha2,
-      1.0, 0.0, 1.0, this.alpha2,
-      1.0, 0.0, 1.0, this.alpha2,
-      1.0, 0.0, 1.0, this.alpha2,
-
-      0.0, 1.0, 1.0, this.alpha2,
-      0.0, 1.0, 1.0, this.alpha2,
-      0.0, 1.0, 1.0, this.alpha2,
-      0.0, 1.0, 1.0, this.alpha2,
-      0.0, 1.0, 1.0, this.alpha2,
-      0.0, 1.0, 1.0, this.alpha2,
-    ];
     const SIZE = 3.0;
     const BEVEL = 0.5;
     this.position = [
