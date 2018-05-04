@@ -92,6 +92,11 @@ class Octahedron {
       }
     }
   
+    this.m = new Matrix();
+    this.m.initialize();
+    this.m.scale(2,2,2);
+    this.position = this.m.multiplyVector(this.position);
+
     this.normal = [];
   
     for (var v = 0; v < 8 * 9; v += 9) {
@@ -139,6 +144,8 @@ class Octahedron {
         this.position.push(this.y + this.basePosition[v]);
       }
     }
+    this.position = this.m.multiplyVector(this.position);
+
     this.normal = [];
   
     for (var v = 0; v < 8 * 9; v += 9) {

@@ -89,4 +89,27 @@ class Matrix {
     m3.push(m1[12]*m2[3]+m1[13]*m2[7]+m1[14]*m2[11]+m1[15]*m2[15]);
     return m3;
   }
+  initialize() {
+    this.m = [
+      1.0, 0.0, 0.0, 0.0,
+      0.0, 1.0, 0.0, 0.0,
+      0.0, 0.0, 1.0, 0.0,
+      0.0, 0.0, 0.0, 1.0,
+    ];
+  }
+  scale(x, y, z) {
+    this.m[ 0] *= x;
+    this.m[ 5] *= y;
+    this.m[10] *= z;
+  }
+  multiplyVector(v1) {
+    const v2 = [];
+
+    for (let l = 0; l < v1.length; l += 3) {
+      v2.push(this.m[0] * v1[0 + l] + this.m[1] * v1[1 + l] + this.m[ 2] * v1[2 + l]); 
+      v2.push(this.m[4] * v1[0 + l] + this.m[5] * v1[1 + l] + this.m[ 6] * v1[2 + l]); 
+      v2.push(this.m[8] * v1[0 + l] + this.m[9] * v1[1 + l] + this.m[10] * v1[2 + l]); 
+    }
+    return v2;
+  }
 };
