@@ -9,7 +9,7 @@ class AI6GL {
       this.time = 0.0;
 //      gl.enable(gl.CULL_FACE);
       gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
       gl.enable(gl.DEPTH_TEST);
       gl.depthFunc(gl.LEQUAL);
     
