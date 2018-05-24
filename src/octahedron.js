@@ -28,52 +28,69 @@ class Octahedron {
        1.0, 1.0, 1.0, 1.0,
        1.0, 1.0, 1.0, 1.0,
   
-       0.0, 0.0, 1.0, 1.0,
-       0.0, 0.0, 1.0, 1.0,
-       0.0, 0.0, 1.0, 1.0,
+      //  0.0, 0.0, 1.0, 1.0,
+      //  0.0, 0.0, 1.0, 1.0,
+      //  0.0, 0.0, 1.0, 1.0,
   
-       1.0, 1.0, 0.0, 1.0,
-       1.0, 1.0, 0.0, 1.0,
-       1.0, 1.0, 0.0, 1.0,
+      //  1.0, 1.0, 0.0, 1.0,
+      //  1.0, 1.0, 0.0, 1.0,
+      //  1.0, 1.0, 0.0, 1.0,
   
-       0.5, 0.5, 0.5, 1.0,
-       0.5, 0.5, 0.5, 1.0,
-       0.5, 0.5, 0.5, 1.0,
+      //  0.5, 0.5, 0.5, 1.0,
+      //  0.5, 0.5, 0.5, 1.0,
+      //  0.5, 0.5, 0.5, 1.0,
     ];
     const r0 = 0.0;
     const r1 = 1.0;
+    const r2 = 1/Math.sqrt(2);
+    console.log(1/Math.sqrt(2));
     this.basePosition = [
       r1,  r0,  r0,
       r0,  r1,  r0,
       r0,  r0,  r1,
   
-      r0, -r1,  r0,
       r1,  r0,  r0,
-      r0,  r0,  r1,
-  
+      r2,  r2,  r0,
+      r2,  r0,  r2,
+
       r0,  r1,  r0,
-      r1,  r0,  r0,
-      r0,  r0, -r1,
-  
-      r1,  r0,  r0,
-      r0, -r1,  r0,
-      r0,  r0, -r1,
-  
-      r0,  r1,  r0,
-      -r1,  r0,  r0,
+      r2,  r2,  r0,
+      r0,  r2,  r2,
+
       r0,  r0,  r1,
+      r2,  r0,  r2,
+      r0,  r2,  r2,
+
+      r2,  r2,  r0,
+      r2,  r0,  r2,
+      r0,  r2,  r2,
+    //   r0, -r1,  r0,
+    //   r1,  r0,  r0,
+    //   r0,  r0,  r1,
   
-     -r1,  r0,  r0,
-      r0, -r1,  r0,
-      r0,  r0,  r1,
+    //   r0,  r1,  r0,
+    //   r1,  r0,  r0,
+    //   r0,  r0, -r1,
   
-     -r1,  r0,  r0,
-      r0,  r1,  r0,
-      r0,  r0, -r1,
+    //   r1,  r0,  r0,
+    //   r0, -r1,  r0,
+    //   r0,  r0, -r1,
   
-     r0, -r1,  r0,
-     -r1,  r0,  r0,
-      r0,  r0, -r1,
+    //   r0,  r1,  r0,
+    //   -r1,  r0,  r0,
+    //   r0,  r0,  r1,
+  
+    //  -r1,  r0,  r0,
+    //   r0, -r1,  r0,
+    //   r0,  r0,  r1,
+  
+    //  -r1,  r0,  r0,
+    //   r0,  r1,  r0,
+    //   r0,  r0, -r1,
+  
+    //  r0, -r1,  r0,
+    //  -r1,  r0,  r0,
+    //   r0,  r0, -r1,
     ];
     this.position = this.basePosition;
     this.normal = this.position;  
@@ -89,7 +106,7 @@ class Octahedron {
     this.z = z;
   }
   update () {
-    this.time += 0.1;
+//    this.time += 0.1;
     this.position = [];
     this.normal = [];
 
@@ -104,7 +121,7 @@ class Octahedron {
     this.srtm.m = Matrix.multiply(this.rm.m, this.stm.m);
     this.position = this.srtm.multiplyVector(this.basePosition);
       
-    for (var v = 0; v < 8 * 9; v += 9) {
+    for (var v = 0; v < 5 * 9; v += 9) {
       var vec1 = [ this.position[3+v]-this.position[0+v], this.position[4+v]-this.position[1+v], this.position[5+v]-this.position[2+v] ];
       var vec2 = [ this.position[6+v]-this.position[0+v], this.position[7+v]-this.position[1+v], this.position[8+v]-this.position[2+v] ];
       this.normal.push(vec1[1] * vec2[2] - vec1[2] * vec2[1]);
