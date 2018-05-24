@@ -5,6 +5,7 @@ app.get('/',         function(req, res){ res.sendFile(__dirname + '/src/index.ht
 app.get('/ai6gl.js', function(req, res){ res.sendFile(__dirname + '/src/ai6gl.js'  ); });
 app.get('/matrix.js', function(req, res){ res.sendFile(__dirname + '/src/matrix.js'); });
 app.get('/bevelcube.js', function(req, res){ res.sendFile(__dirname + '/src/bevelcube.js'); });
+app.get('/cube.js', function(req, res){ res.sendFile(__dirname + '/src/cube.js'); });
 app.get('/octahedron.js', function(req, res){ res.sendFile(__dirname + '/src/octahedron.js'); });
 app.get('/src/shader/vertex.vs', function(req, res){ res.sendFile(__dirname + '/src/shader/vertex.vs'); });
 app.get('/src/shader/fragment.fs', function(req, res){ res.sendFile(__dirname + '/src/shader/fragment.fs'); });

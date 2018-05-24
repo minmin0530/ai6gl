@@ -6,12 +6,13 @@
     <canvas id='canvas' width='640' height='480'></canvas>
     <script src='matrix.js'></script>
     <script src='bevelcube.js'></script>
+    <script src='cube.js'></script>
     <script src='octahedron.js'></script>
     <script src='ai6gl.js'></script>
     <script>
       const ai6 = new AI6GL();
       const object1 = new Octahedron();
-      const object2 = new Octahedron();
+      const object2 = new Cube();
       const object3 = new BevelCube();
       const light = [10.0, 0.0, 0.0];
       const eye = [0.0, 0.0, 10.0];
@@ -39,6 +40,7 @@
         requestAnimationFrame( mainLoop );
         object1.update();
         object2.update();
+        object3.update();
       }
 
     </script>
