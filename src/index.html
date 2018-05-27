@@ -25,11 +25,11 @@
       
       object1.setPosition( 3.0, 0.0, 0.0);
       object2.setPosition(-3.0, 0.0, 0.0);
-      object4.setPosition(-9.0, 0.0, 0.0);
+//      object4.setPosition( 3.5, 0.0, 0.0);
       ai6.addObject( object1 );
-      ai6.addObject( object2 );
-      ai6.addObject( object3 );
-      ai6.addObject( object4 );
+      // ai6.addObject( object2 );
+      // ai6.addObject( object3 );
+      // ai6.addObject( object4 );
       ai6.addLight(light);
       ai6.setCamera(eye, target, up);
       
@@ -38,16 +38,16 @@
       this.time = 0.0;
       function mainLoop() {
         this.time += 0.01;
-        eye[0] = Math.cos(this.time) * 10;
-        eye[1] = 10.0;
-        eye[2] = Math.sin(this.time) * 10;
+        // eye[0] = Math.cos(this.time) * 3;
+        // eye[1] = -3.0;
+        // eye[2] = Math.sin(this.time) * 3;
         // light[0] = 0.0;
         ai6.draw(ai6.GL);
         requestAnimationFrame( mainLoop );
         object1.update();
-        object2.update();
-        object3.update();
-        object4.update();
+        // object2.update();
+        // object3.update();
+        // object4.update();
       }
 
     </script>

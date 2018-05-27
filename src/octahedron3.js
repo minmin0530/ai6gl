@@ -23,9 +23,9 @@ class Octahedron3 {
       0.0, 1.0, 1.0, 1.0,
       0.0, 1.0, 1.0, 1.0,
  
-      1.0, 1.0, 1.0, 1.0,
-      1.0, 1.0, 1.0, 1.0,
-      1.0, 1.0, 1.0, 1.0,
+      // 1.0, 1.0, 1.0, 1.0,
+      // 1.0, 1.0, 1.0, 1.0,
+      // 1.0, 1.0, 1.0, 1.0,
  
       0.0, 0.0, 1.0, 1.0,
       0.0, 0.0, 1.0, 1.0,
@@ -45,24 +45,50 @@ class Octahedron3 {
     const r0 = 0.0;
     const r1 = 1.0;
     const r2 = 1/Math.sqrt(2);
+    const r3s = Math.sin(Math.PI/180 * 22.5);
+    const r3c = Math.cos(Math.PI/180 * 22.5);
+    const r3m = 0.5 - Math.sqrt(1.5)/4;
 
+    console.log(r3s);
+    console.log(r3c);
 
     const baseSubdivision = [
       r1,  r0,  r0,
-      r2,  r2,  r0,
-      r2,  r0,  r2,
-
       r0,  r1,  r0,
-      r2,  r2,  r0,
-      r0,  r2,  r2,
-
       r0,  r0,  r1,
+      
+      r1,  r0,  r0,
+      r2,  r2,  r0,
+      r2,  r0,  r2,      
+
+      r1,  r0,  r0,
+      r3s, r3c, r0,
+      r3s, r0,  r3c,
+
+      r3s, r0,  r3c,
+      r2-r3s,  0.5,  0.5,
       r2,  r0,  r2,
-      r0,  r2,  r2,
+
+      r3s, r3c, r0,
+      r2-r3s,  0.5,  0.5,
+      r2,  r2,  r0,
 
       r2,  r2,  r0,
-      r2,  r0,  r2,
-      r0,  r2,  r2,
+      r2-r3s,  0.5,  0.5,
+      r2,  r0,  r2,      
+      // r2-r3s,  0.5,  0.5,
+      // r2,  r2,  r0,
+      // r2,  r0,  r2,
+      
+
+
+      // r0,  r0,  r1,
+      // r2,  r0,  r2,
+      // r0,  r2,  r2,
+
+      // r2,  r2,  r0,
+      // r2,  r0,  r2,
+      // r0,  r2,  r2,
       
     ];
 
@@ -71,18 +97,18 @@ class Octahedron3 {
     let minusX = 1;
     let minusY = 1;
     let minusZ = 1;
-    for (let m = 0; m < 8; ++m) {
+    for (let m = 0; m < 1; ++m) {
       if (m % 4 < 2 ) {minusX = -1;} else {minusX = 1;}
       if (m % 2 == 0) {minusY = -1;} else {minusY = 1;}
       if (m >= 4    ) {minusZ = -1;} else {minusZ = 1;}
-      for (let l = 0; l < 4 * 3 * 3; l += 3) {
+      for (let l = 0; l < 6 * 3 * 3; l += 3) {
         this.basePosition.push(minusX * baseSubdivision[0 + l]);
         this.basePosition.push(minusY * baseSubdivision[1 + l]);
         this.basePosition.push(minusZ * baseSubdivision[2 + l]);
       }
     }
 
-    for (let m = 0; m < 4; ++m) {    
+    for (let m = 0; m < 1; ++m) {    
     for (let l = 0; l < subdivisionColor.length; ++l) {
       this.color.push(subdivisionColor[l]);
     }
@@ -117,7 +143,7 @@ class Octahedron3 {
     this.srtm.m = Matrix.multiply(this.rm.m, this.stm.m);
     this.position = this.srtm.multiplyVector(this.basePosition);
       
-    for (var v = 0; v < 32 * 9; v += 9) {
+    for (var v = 0; v < 6 * 9; v += 9) {
       var vec1 = [ this.position[3+v]-this.position[0+v], this.position[4+v]-this.position[1+v], this.position[5+v]-this.position[2+v] ];
       var vec2 = [ this.position[6+v]-this.position[0+v], this.position[7+v]-this.position[1+v], this.position[8+v]-this.position[2+v] ];
       this.normal.push(vec1[1] * vec2[2] - vec1[2] * vec2[1]);
