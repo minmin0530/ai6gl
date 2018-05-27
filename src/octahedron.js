@@ -89,7 +89,7 @@ class Octahedron {
     this.z = z;
   }
   update () {
-//    this.time += 0.1;
+    this.time += 0.1;
     this.position = [];
     this.normal = [];
 
