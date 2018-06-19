@@ -80,7 +80,7 @@ class AI6GL {
 
 
   draw(gl) {
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clearColor(1.0, 1.0, 1.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     const planeLightPosition = [
@@ -110,7 +110,7 @@ class AI6GL {
       gl.vertexAttribPointer(vPlaneAttNormal, 3, gl.FLOAT, false, 0, 0);
   
       const view        = Matrix.lookAt(this.eye, this.target, this.up);
-      const perspective = Matrix.perspective(90, 640.0 / 480.0, 0.1, 100);
+      const perspective = Matrix.perspective(90, 640.0 / 480.0, 0.1, 1000);
       const model       = Matrix.create();
       const vp          = Matrix.multiply(perspective, view);
       const mvp         = Matrix.multiply(vp, model);

@@ -9,20 +9,20 @@ class BevelCube {
     this.color = [];
 
     for (let l = 0; l < 16 * 6; ++l) {
-      this.color.push(0.5);
-      this.color.push(0.5);
-      this.color.push(0.5);
+      this.color.push(1.0);
+      this.color.push(0.0);
+      this.color.push(0.0);
       this.color.push(1.0);
     }
     for (let l = 0; l < 6 * 6; ++l) {
       this.color.push(1.0);
       this.color.push(0.0);
       this.color.push(0.0);
-      this.color.push(0.5);
+      this.color.push(0.1);
     }
 
-    const SIZE = 3.0;
-    const BEVEL = 0.5;
+    const SIZE = 10.0;
+    const BEVEL = 2.0;
     this.basePosition = [
       //vertex
        SIZE,         SIZE +BEVEL,  SIZE,
@@ -207,7 +207,7 @@ class BevelCube {
     this.rm.initialize();
     this.srtm.initialize();
 
-    this.rm.rotateX(this.time);
+    this.rm.rotateX(this.time*0.1);
     this.stm.scale(0.5, 0.5, 0.5);
     this.stm.translate(this.x, this.y, this.z);
 
