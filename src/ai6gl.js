@@ -1,3 +1,7 @@
+/*
+ai6gl is WebGL wrapper library.
+*/
+
 class AI6GL {
   constructor () {
     const canvas = document.getElementById('canvas');
