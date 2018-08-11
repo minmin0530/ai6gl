@@ -33,8 +33,8 @@ class AI6GL {
     this.object.push(object);
   }
   async fetchShader(gl, f) {
-    this.vertexShader   = await fetch('src/shader/vertex.vs'  ).then((response) => response.text());
-    this.fragmentShader = await fetch('src/shader/fragment.fs').then((response) => response.text());
+    this.vertexShader   = await fetch('vertex.vs'  ).then((response) => response.text());
+    this.fragmentShader = await fetch('fragment.fs').then((response) => response.text());
     
     this.prg = await this.create_program(this.create_shader('vs', gl), this.create_shader('fs', gl), gl);
 //    await this.mainLoop(gl);
