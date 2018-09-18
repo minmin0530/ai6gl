@@ -17,13 +17,13 @@
     <script src='all.js'></script>
     <script>
       const ai6 = new AI6GL();
-      const object1 = new Grass();
-      const object2 = new Cube();
-      const object3 = new BevelCube();
-      const object4 = new Octahedron2();
+      // const object1 = new Grass();
+      // const object2 = new Cube();
+      // const object3 = new BevelCube();
+      // const object4 = new Octahedron2();
       const cubeArray = [];
-      const CUBE_NUM = 64;
-      const CUBE_NUM_3 = 4;
+      const CUBE_NUM = 8;
+      const CUBE_NUM_3 = 2;
       let i = 0;
       for (let j = 0; j < CUBE_NUM_3; ++j) {
       for (let k = 0; k < CUBE_NUM_3; ++k) {
@@ -40,10 +40,10 @@
       const target = [0.0, 0.0, 0.0];
       const up = [0.0, 1.0, 0.0];
       
-      object1.setPosition( 3.0, 0.0, 0.0);
-      object2.setPosition(-3.0, 0.0, 0.0);
+      // object1.setPosition( 3.0, 0.0, 0.0);
+      // object2.setPosition(-3.0, 0.0, 0.0);
 //      object4.setPosition( 3.5, 0.0, 0.0);
-      ai6.addObject( object1 );
+      // ai6.addObject( object1 );
       // ai6.addObject( object2 );
       // ai6.addObject( object3 );
       // ai6.addObject( object4 );
@@ -54,21 +54,21 @@
 
       this.time = 0.0;
       function mainLoop() {
-        this.time += 0.01;
+        this.time += 0.1;
         light[0] = Math.cos(this.time*0.1) * 100;
         light[1] = 30.0;
         light[2] = Math.sin(this.time*0.1) * 100;
-        eye[0] = Math.cos(this.time*-0.5) * 70;
-        eye[1] = 70.0;
-        eye[2] = Math.sin(this.time*-0.5) * 70;
+        eye[0] = Math.cos(this.time*-0.1) * 70;
+        eye[1] = 10.0;
+        eye[2] = Math.sin(this.time*-0.1) * 70;
         // // light[0] = 0.0;
         ai6.draw(ai6.GL);
         requestAnimationFrame( mainLoop );
-        object1.update();
         for (let l = 0; l < CUBE_NUM; ++l) {
-          cubeArray[l].update();
+    //      cubeArray[l].update();
         }
 
+        // object1.update();
         // object2.update();
         // object3.update();
         // object4.update();

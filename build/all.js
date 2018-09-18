@@ -8,7 +8,7 @@ class Matrix {
     ];
     return m;
   }
-  static lookAt(e, t, u) {
+  static lookAt(e, tt, u) {
     const m = [
       1.0, 0.0, 0.0, 0.0,
       0.0, 1.0, 0.0, 0.0,
@@ -17,9 +17,10 @@ class Matrix {
     ];
     let l;
 
-    t[0] = e[0] - t[0];
-    t[1] = e[1] - t[1];
-    t[2] = e[2] - t[2];
+    const t = [0.0, 0.0, 0.0];
+    t[0] = e[0] - tt[0];
+    t[1] = e[1] - tt[1];
+    t[2] = e[2] - tt[2];
     
     l = Math.sqrt(t[0]*t[0]+t[1]*t[1]+t[2]*t[2]);
     m[ 2] = t[0] / l;
@@ -369,100 +370,105 @@ class BevelCube {
   }
 };
 class Cube {
-  constructor () {
+  constructor (r, g, b, a, s) {
     this.x = 0.0;
     this.y = 0.0;
     this.z = 0.0;
     
-    this.time = 0.0;
+    this.r = r;
+    this.g = g;
+    this.b = b;
     
-    this.alpha = 1.0;
+    this.alpha = a;
+
+    this.time = 0.0;
+
     this.color = [
-        1.0, 0.0, 0.0, this.alpha,
-        1.0, 0.0, 0.0, this.alpha,
-        1.0, 0.0, 0.0, this.alpha,
-        1.0, 0.0, 0.0, this.alpha,
-        1.0, 0.0, 0.0, this.alpha,
-        1.0, 0.0, 0.0, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
   
-        0.0, 1.0, 0.0, this.alpha,
-        0.0, 1.0, 0.0, this.alpha,
-        0.0, 1.0, 0.0, this.alpha,
-        0.0, 1.0, 0.0, this.alpha,
-        0.0, 1.0, 0.0, this.alpha,
-        0.0, 1.0, 0.0, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
   
-        0.0, 0.0, 1.0, this.alpha,
-        0.0, 0.0, 1.0, this.alpha,
-        0.0, 0.0, 1.0, this.alpha,
-        0.0, 0.0, 1.0, this.alpha,
-        0.0, 0.0, 1.0, this.alpha,
-        0.0, 0.0, 1.0, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
   
-        1.0, 1.0, 0.0, this.alpha,
-        1.0, 1.0, 0.0, this.alpha,
-        1.0, 1.0, 0.0, this.alpha,
-        1.0, 1.0, 0.0, this.alpha,
-        1.0, 1.0, 0.0, this.alpha,
-        1.0, 1.0, 0.0, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
   
-        1.0, 0.0, 1.0, this.alpha,
-        1.0, 0.0, 1.0, this.alpha,
-        1.0, 0.0, 1.0, this.alpha,
-        1.0, 0.0, 1.0, this.alpha,
-        1.0, 0.0, 1.0, this.alpha,
-        1.0, 0.0, 1.0, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
   
-        0.0, 1.0, 1.0, this.alpha,
-        0.0, 1.0, 1.0, this.alpha,
-        0.0, 1.0, 1.0, this.alpha,
-        0.0, 1.0, 1.0, this.alpha,
-        0.0, 1.0, 1.0, this.alpha,
-        0.0, 1.0, 1.0, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
+        this.r, this.g, this.b, this.alpha,
     ];
-    const SIZE = 3.0;
+    this.SIZE = s;
     this.basePosition = [
-        -SIZE,  SIZE, -SIZE,
-         SIZE,  SIZE, -SIZE,
-         SIZE, -SIZE, -SIZE,
-         SIZE, -SIZE, -SIZE,
-        -SIZE, -SIZE, -SIZE,
-        -SIZE,  SIZE, -SIZE,
+        -this.SIZE,  this.SIZE, -this.SIZE,
+         this.SIZE,  this.SIZE, -this.SIZE,
+         this.SIZE, -this.SIZE, -this.SIZE,
+         this.SIZE, -this.SIZE, -this.SIZE,
+        -this.SIZE, -this.SIZE, -this.SIZE,
+        -this.SIZE,  this.SIZE, -this.SIZE,
   
-         SIZE, -SIZE,  SIZE,
-         SIZE,  SIZE,  SIZE,
-        -SIZE,  SIZE,  SIZE,
-        -SIZE,  SIZE,  SIZE,
-        -SIZE, -SIZE,  SIZE,
-         SIZE, -SIZE,  SIZE,
+         this.SIZE, -this.SIZE,  this.SIZE,
+         this.SIZE,  this.SIZE,  this.SIZE,
+        -this.SIZE,  this.SIZE,  this.SIZE,
+        -this.SIZE,  this.SIZE,  this.SIZE,
+        -this.SIZE, -this.SIZE,  this.SIZE,
+         this.SIZE, -this.SIZE,  this.SIZE,
   
-        -SIZE, -SIZE,  SIZE,
-        -SIZE,  SIZE,  SIZE,
-        -SIZE,  SIZE, -SIZE,
-        -SIZE,  SIZE, -SIZE,
-        -SIZE, -SIZE, -SIZE,
-        -SIZE, -SIZE,  SIZE,
+        -this.SIZE, -this.SIZE,  this.SIZE,
+        -this.SIZE,  this.SIZE,  this.SIZE,
+        -this.SIZE,  this.SIZE, -this.SIZE,
+        -this.SIZE,  this.SIZE, -this.SIZE,
+        -this.SIZE, -this.SIZE, -this.SIZE,
+        -this.SIZE, -this.SIZE,  this.SIZE,
         
-         SIZE,  SIZE, -SIZE, 
-         SIZE,  SIZE,  SIZE, 
-         SIZE, -SIZE,  SIZE, 
-         SIZE, -SIZE,  SIZE, 
-         SIZE, -SIZE, -SIZE, 
-         SIZE,  SIZE, -SIZE,
+         this.SIZE,  this.SIZE, -this.SIZE, 
+         this.SIZE,  this.SIZE,  this.SIZE, 
+         this.SIZE, -this.SIZE,  this.SIZE, 
+         this.SIZE, -this.SIZE,  this.SIZE, 
+         this.SIZE, -this.SIZE, -this.SIZE, 
+         this.SIZE,  this.SIZE, -this.SIZE,
    
-        -SIZE,  SIZE,  SIZE,
-         SIZE,  SIZE,  SIZE,
-         SIZE,  SIZE, -SIZE,
-         SIZE,  SIZE, -SIZE,
-        -SIZE,  SIZE, -SIZE,
-        -SIZE,  SIZE,  SIZE,
+        -this.SIZE,  this.SIZE,  this.SIZE,
+         this.SIZE,  this.SIZE,  this.SIZE,
+         this.SIZE,  this.SIZE, -this.SIZE,
+         this.SIZE,  this.SIZE, -this.SIZE,
+        -this.SIZE,  this.SIZE, -this.SIZE,
+        -this.SIZE,  this.SIZE,  this.SIZE,
         
-         SIZE, -SIZE, -SIZE, 
-         SIZE, -SIZE,  SIZE, 
-        -SIZE, -SIZE,  SIZE, 
-        -SIZE, -SIZE,  SIZE, 
-        -SIZE, -SIZE, -SIZE, 
-         SIZE, -SIZE, -SIZE, 
+         this.SIZE, -this.SIZE, -this.SIZE, 
+         this.SIZE, -this.SIZE,  this.SIZE, 
+        -this.SIZE, -this.SIZE,  this.SIZE, 
+        -this.SIZE, -this.SIZE,  this.SIZE, 
+        -this.SIZE, -this.SIZE, -this.SIZE, 
+         this.SIZE, -this.SIZE, -this.SIZE, 
     ];
     this.position = this.basePosition;
     this.normal = this.position;  
@@ -483,15 +489,17 @@ class Cube {
     this.normal = [];
 
     this.stm.initialize();
-    this.rm.initialize();
-    this.srtm.initialize();
+//    this.rm.initialize();
+//    this.srtm.initialize();
 
-    this.rm.rotateX(this.time);
-    this.stm.scale(0.5, 0.5, 0.5);
+//    this.rm.rotateX(this.time);
+    this.stm.scale(this.SIZE * 0.1, this.SIZE * 0.1, this.SIZE * 0.1);
     this.stm.translate(this.x, this.y, this.z);
 
-    this.srtm.m = Matrix.multiply(this.rm.m, this.stm.m);
-    this.position = this.srtm.multiplyVector(this.basePosition);
+//    this.srtm.m = Matrix.multiply(this.rm.m, this.stm.m);
+//    this.position = this.srtm.multiplyVector(this.basePosition);
+
+    this.position = this.stm.multiplyVector(this.basePosition);
       
     for (var v = 0; v < 12 * 9; v += 9) {
       var vec1 = [ this.position[3+v]-this.position[0+v], this.position[4+v]-this.position[1+v], this.position[5+v]-this.position[2+v] ];
@@ -512,6 +520,51 @@ class Cube {
       this.normal.push(vec1[2] * vec2[0] - vec1[0] * vec2[2]);
       this.normal.push(vec1[0] * vec2[1] - vec1[1] * vec2[0]);
    }
+
+   this.color = [
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    this.r, this.g, this.b, this.alpha,
+    ];
+    
   }
 
 };
@@ -1275,7 +1328,7 @@ class AI6GL {
 
 
   draw(gl) {
-    gl.clearColor(1.0, 1.0, 1.0, 1.0);
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     const planeLightPosition = [

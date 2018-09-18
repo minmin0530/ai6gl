@@ -6,7 +6,7 @@ attribute vec3 normal;
 varying   vec4 vColor;
 varying   vec3 vNormal;
 varying   vec3 vLightPosition;
-
+varying   vec3 vPosition;
 uniform   vec3 lightPosition;
 uniform   mat4 mvp;
 
@@ -16,4 +16,5 @@ void main () {
   vNormal = normal;
   vLightPosition = lightPosition - position;
   gl_Position = mvp * vec4(position, 1.0);
+  vPosition = gl_Position.xyz;
 }
